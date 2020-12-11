@@ -23,14 +23,12 @@ jobs:
         location: tmp 
 
     - name: SFTP uploader
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      uses: wangyucode/sftp-upload-action@v1.1
       with:
-        server: ${{secrets.TEST_SERVER_HOST}}
+        host: ${{secrets.TEST_SERVER_HOST}}
         username: ${{secrets.TEST_SERVER_USER}}
         password: ${{secrets.TEST_SERVER_PASSWORD}}
         port: ${{secrets.TEST_SERVER_SSH_PORT}}
         protocol: ftps-legacy
-        local-dir: tmp/
-        server-dir: /ZOWE/tmp/
-        log-level: verbose
-        security: loose
+        localDir: tmp
+        remoteDir: /ZOWE/tmp
