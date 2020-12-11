@@ -32,5 +32,5 @@ jobs:
         protocol: ftps
         local-dir: tmp
         server-dir: /ZOWE/tmp
-        log-level: debug
+        log-level: verbose
         security: loose
