@@ -30,7 +30,7 @@ jobs:
         password: ${{secrets.TEST_SERVER_PASSWORD}}
         port: ${{secrets.TEST_SERVER_SSH_PORT}}
         protocol: ftps
-        local-dir: tmp
+        local-dir: tmp/
         server-dir: /ZOWE/tmp
         log-level: verbose
         security: loose
