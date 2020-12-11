@@ -18,15 +18,15 @@ jobs:
     - name: Download
       uses: carlosperate/download-file-action@v1.0.3
       with:
-        file-url: ${{ inputs.url }}
+        file-url: ${{ github.event.inputs.url }}
         file-name: zowe.pax
 
     - name: SFTP uploader
       uses: wangyucode/sftp-upload-action@v1.1
       with:
-        host: ${{secret.TEST_SERVER_HOST}}
-        port: ${{secret.TEST_SERVER_SSH_PORT}}
-        username: ${{secret.TEST_SERVER_USER}}
-        password: ${{secret.TEST_SERVER_PASSWORD}}
+        host: ${{secrets.TEST_SERVER_HOST}}
+        port: ${{secrets.TEST_SERVER_SSH_PORT}}
+        username: ${{secrets.TEST_SERVER_USER}}
+        password: ${{secrets.TEST_SERVER_PASSWORD}}
         localDir: zowe.pax
         remoteDir: /ZOWE/tmp/test.pax
