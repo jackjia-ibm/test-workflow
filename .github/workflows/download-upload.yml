@@ -23,12 +23,11 @@ jobs:
         location: tmp 
 
     - name: SFTP uploader
-      uses: wangyucode/sftp-upload-action@v1.1
+      uses: garygrossgarten/github-action-scp@v0.7.1
       with:
         host: ${{secrets.TEST_SERVER_HOST}}
         username: ${{secrets.TEST_SERVER_USER}}
         password: ${{secrets.TEST_SERVER_PASSWORD}}
         port: ${{secrets.TEST_SERVER_SSH_PORT}}
-        protocol: ftps-legacy
-        localDir: tmp
-        remoteDir: /ZOWE/tmp
+        local: tmp
+        remote: /ZOWE/tmp
