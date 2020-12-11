@@ -1,0 +1,32 @@
+name: Test upload
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      url:
+        description: 'URL to download'
+        required: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: ${{ inputs.url }}
+        file-name: zowe.pax
+
+    - name: SFTP uploader
+      uses: wangyucode/sftp-upload-action@v1.1
+      with:
+        host: ${{secret.TEST_SERVER_HOST}}
+        port: ${{secret.TEST_SERVER_SSH_PORT}}
+        username: ${{secret.TEST_SERVER_USER}}
+        password: ${{secret.TEST_SERVER_PASSWORD}}
+        localDir: zowe.pax
+        remoteDir: /ZOWE/tmp/test.pax
